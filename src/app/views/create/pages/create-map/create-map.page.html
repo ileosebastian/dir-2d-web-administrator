@@ -1,0 +1,95 @@
+<ion-content>
+  <ion-grid fixed="true" class="ion-no-padding">
+    <form [formGroup]="mapForm" >
+
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-row>
+            <ion-col size="1">
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-back-button defaultHref="home/search/map" color="primary"></ion-back-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-col>
+            <ion-col size="10">
+              <h1 class="ion-text-center">Ingreso de nuevo mapa</h1>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <h2 class="ion-text-center">Informacion general</h2>
+            </ion-col>
+
+            <ion-col size="3"></ion-col>
+            <ion-col size="6" class="ion-padding">
+              <ion-input
+                formControlName="buildingName"
+                name="mapName" label="Nombre del mapa:" label-placement="floating" fill="outline"
+                placeholder="Edificio Uno" required>
+              </ion-input>
+            </ion-col>
+            <ion-col size="3"></ion-col>
+
+            <ion-col size="6" class="ion-padding">
+              <ion-item>
+                <ion-select
+                  formControlName="campus"
+                  (ionChange)="onSelectCamp( $event )" label="Campus:" label-placement="floating"
+                  interface="popover" placeholder="Seleccione el campus">
+                  <ion-select-option [value]="camp.name" *ngFor="let camp of campusList | async">
+                    Campus {{ camp.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="6" class="ion-padding">
+              <ion-item>
+                <ion-select *ngIf="!facultyList; else faculties" label="Facultad:" label-placement="floating"
+                  interface="popover" placeholder="Primero, seleccione un campus">
+                  <ion-select-option value="">Sin facultad</ion-select-option>
+                </ion-select>
+                <ng-template #faculties>
+                  <ion-select
+                    formControlName="faculty"
+                    label="Facultad:" label-placement="floating" interface="popover"
+                    placeholder="Seleccione la facultad">
+                    <ion-select-option *ngFor="let facu of facultyList | async" [value]="facu.name">
+                      Facultad de {{ facu.name }}
+                    </ion-select-option>
+                  </ion-select>
+                </ng-template>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-padding">
+            <ion-col size="4"></ion-col>
+            <ion-col size="4">
+
+              <ion-button
+                *ngIf="showNextStep"
+                [disabled]="mapForm.invalid"
+                (click)="onNextForCreatePlane()"
+                routerLink="../plane-editor"
+                type="button"
+                expand="full"
+                fill="solid">
+                <ion-label>Siguiente</ion-label>
+              </ion-button>
+
+            </ion-col>
+            <ion-col size="4"></ion-col>
+          </ion-row>
+
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+
+    </form>
+  </ion-grid>
+</ion-content>

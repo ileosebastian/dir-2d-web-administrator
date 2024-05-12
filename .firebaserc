@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "directory-2d": {
+      "hosting": {
+        "app": [
+          "dir-2d-administrator"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "directory-2d"
+  }
+}

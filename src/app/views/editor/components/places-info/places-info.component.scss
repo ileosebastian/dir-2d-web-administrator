@@ -1,0 +1,24 @@
+.is-belongs-professors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.professor-selector-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show-professor-selector {
+    border: solid 1px var(--ion-color-dark);
+}
+
+.list-all-professors {
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}

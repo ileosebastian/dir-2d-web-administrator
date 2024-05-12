@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <div id="container">
+          <h1 class="ion-text-center">Sistema Administrador del</h1>
+          <h1 class="ion-text-center"><b>Directorio 2D</b></h1>
+          <br>
+
+          <h3 class="ion-text-center">Ingreso al sistema</h3>
+
+          <ion-button [disabled]="isDisabled" (click)="onLogin()" size="default" expand="full">
+            <ion-label class="ion-text-wrap">
+              Iniciar Sesion <ion-label class="ion-hide-md-down">con Google</ion-label>
+            </ion-label>
+          </ion-button>
+          <div id="spinner" *ngIf="isDisabled">
+            <ion-spinner name="circles" color="secondary" mode="ios"></ion-spinner>
+            <ion-label class="ion-text-center">Cargando servicio de autenticación...</ion-label>
+          </div>
+
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

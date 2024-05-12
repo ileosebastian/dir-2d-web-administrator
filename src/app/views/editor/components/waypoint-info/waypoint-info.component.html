@@ -1,0 +1,110 @@
+<!-- <ion-row style="width: 100%;"> -->
+  <ion-row style="width: 100%;">
+    <ion-col size="1"></ion-col>
+    <ion-col size="10">
+      <h3 class="ion-text-center ion-no-padding">Editar punto de referencia</h3>
+    </ion-col>
+    <ion-col size="1">
+      <ion-button (click)="close()" fill="clear" color="danger">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="width: 100%;">
+    <ion-col size="12" class="ion-margin-top">
+      <h3 class="ion-text-center ion-no-padding">Informacion general</h3>
+  
+      <ion-item>
+        <ion-label position="floating">Nombre del punto:</ion-label>
+        <ion-input type="text" [value]="waypoint.name" (ionInput)="updatingWPName( $event )"></ion-input>
+      </ion-item>
+  
+      <ion-list class="ion-no-padding">
+        <ion-radio-group name="typeWaypoint" [value]="waypoint.pointType" (ionChange)="selectPointType( $event )">
+          <ion-list-header class="ion-center">
+            <h5 class="ion-text-center">Tipo:</h5>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Origen (entrada principal)</ion-label>
+            <ion-radio value="origin_first_floor"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Origen (guía al anterior piso)</ion-label>
+            <ion-radio value="origin_previous_floor"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Origen (guía al siguiente piso)</ion-label>
+            <ion-radio value="origin_next_floor"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Guia al anterior piso</ion-label>
+            <ion-radio value="previous_floor"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Guia al siguiente piso</ion-label>
+            <ion-radio value="next_floor"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Destino</ion-label>
+            <ion-radio value="destiny"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+        
+    </ion-col>
+    
+  </ion-row>
+
+  <!-- ----- LINK WP DESTINY JUST A PLACE ----- -->
+  <ion-row style="width: 100%;" *ngIf="pointType === 'destiny'">
+    <ion-col size="12" *ngIf="placePicked">
+      <h5  class="ion-text-center ion-no-padding" >Ambiente enlazado:</h5>
+      <ion-card >
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="'../../../../assets/icons/category/round/'+placePicked.category+'.svg'" alt="place"/>
+          </ion-avatar>
+          <ion-card-header>
+            <ion-card-title class="ion-text-capitalize">{{ placePicked.name + ' ' + placePicked.code }}</ion-card-title>
+            <ion-card-subtitle class="ion-text-capitalize">{{ getNameByCategory(placePicked.category).toUpperCase() }}</ion-card-subtitle>
+          </ion-card-header>
+    
+          <ion-buttons slot="end">
+            <ion-button color="danger" (click)="unbindPlace( placePicked )">
+              Desligar
+            </ion-button>
+          </ion-buttons> 
+    
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row *ngIf="pointType === 'destiny'">
+    <ion-col size="12">
+      <h4 class="ion-text-center ion-no-padding ion-no-margin">Elija el ambiente a enlazar:</h4>
+      <ion-list class="list-all-places">
+        <app-place-selector-card
+          [placePicked]="placePicked"
+          [floor]="plane.floor"
+          [waypoint]="waypoint"
+          (emmitPlaceWithWaypoint)="listenPlaceUpdated($event)"
+        ></app-place-selector-card>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+<!-- </ion-row> -->
+
+<!-- ----- OPTIONS ----- -->
+<ion-row style="width: 100%; margin-left: auto; margin-right: auto;">
+  <ion-col size="12" class="ion-margin-top show-info-submits">
+    <ion-button color="tertiary" fill="solid" (click)="update()">
+      aplicar cambios
+    </ion-button>
+    <ion-button color="danger" fill="solid" (click)="remove()">
+      eliminar del editor
+    </ion-button>
+  </ion-col>
+</ion-row>

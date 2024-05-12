@@ -1,0 +1,82 @@
+[
+    {
+        "shortName": "auditorio",
+        "name": "salon de auditorio",
+        "category": "audience",
+        "iconPath": "../../../../../assets/icons/category/round/audience.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/audience.svg",
+        "color": "audicence"
+    },
+    {
+        "shortName": "baño",
+        "name": "baños",
+        "category": "bathroom",
+        "iconPath": "../../../../../assets/icons/category/round/bathroom.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/bathroom.svg",
+        "color": "bathroom"
+    },
+    {
+        "shortName": "aula",
+        "name": "aula de clases",
+        "category": "classroom",
+        "iconPath": "../../../../../assets/icons/category/round/classroom.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/classroom.svg",
+        "color": "classroom"
+    },
+    {
+        "shortName": "datos",
+        "name": "centro de datos",
+        "category": "data-center",
+        "iconPath": "../../../../../assets/icons/category/round/data-center.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/data-center.svg",
+        "color": "black"
+    },
+    {
+        "shortName": "ascensor",
+        "name": "ascensor",
+        "category": "elevator",
+        "iconPath": "../../../../../assets/icons/category/round/elevator.svg",
+        "spritePath": "../../../../../assets/icons/sprites/elevator.svg",
+        "color": "elevator"
+    },
+    {
+        "shortName": "administración",
+        "name": "oficina de administración",
+        "category": "admin-office",
+        "iconPath": "../../../../../assets/icons/category/round/admin-office.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/office-admin.svg",
+        "color": "admin-office"
+    },
+    {
+        "shortName": "emergencia",
+        "name": "salida de emergencia",
+        "category": "emergency",
+        "iconPath": "../../../../../assets/icons/category/round/emergency.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/emergency.svg",
+        "color": "emergency"
+    },
+    {
+        "shortName": "docente",
+        "name": "oficina de docentes",
+        "category": "profe-office",
+        "iconPath": "../../../../../assets/icons/category/round/profe-office.svg",
+        "spritePath": "../../../../../assets/icons/category/clear/office-profe.svg",
+        "color": "profe-office"
+    },
+    {
+        "shortName": "esc. vertical",
+        "name": "escaleras verticales",
+        "category": "stair-vertical",
+        "iconPath": "../../../../../assets/icons/category/round/stair-vertical.svg",
+        "spritePath": "../../../../../assets/icons/sprites/stair.svg",
+        "color": "stair"
+    },
+    {
+        "shortName": "esc. horizontal",
+        "name": "escaleras horizontales",
+        "category": "stair-horizontal",
+        "iconPath": "../../../../../assets/icons/category/round/stair-horizontal.svg",
+        "spritePath": "../../../../../assets/icons/sprites/stair-90.svg",
+        "color": "stair"
+    }
+]

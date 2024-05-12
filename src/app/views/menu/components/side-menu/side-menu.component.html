@@ -1,0 +1,64 @@
+<!-- Side menu to be displayed for the entire application -->
+<ion-menu (ionWillOpen)="changeIconTheme()" type="reveal" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+
+      <!-- Opciones de usuario -->
+      <!-- si existe un usuario atenticado -->
+      <ion-buttons *ngIf="user !== null; else content" slot="start">
+        <ion-item color="primary">
+          <ion-avatar slot="start">
+            <img alt="U" [src]="user.photoURL" />
+          </ion-avatar>
+          <ion-label>
+            <h5 class="ion-text-uppercase"><b>{{ user.name }}</b></h5>
+            <p id="logout" button (click)="onLogout()">Cerrar Sesion</p>
+          </ion-label>
+        </ion-item>
+      </ion-buttons>
+
+      <!-- si no existe el usuario -->
+      <ng-template #content>
+        <h5 class="ion-padding-start ion-text-uppercase">Guest User</h5>
+      </ng-template>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-menu-toggle>
+
+        <ion-item-group *ngFor="let menu of menuOptions | async" mode="ios">
+
+          <ion-item-divider>
+            <ion-img
+              width="10"
+              class="ion-padding"
+              *ngIf="darkMode; else ligth"
+              [src]="menu.pathIconDark">
+            </ion-img>
+            <ng-template #ligth>
+              <ion-img
+                width="10"
+                class="ion-padding"
+                [src]="menu.pathIconLight">
+              </ion-img>
+            </ng-template>
+            <ion-label>{{ menu.domain }}</ion-label>
+          </ion-item-divider>
+
+          <ion-item
+            *ngFor="let opt of menu.options"
+            button
+            detail="true"
+            [routerLink]="opt.redirectTo">
+            <ion-label>{{ opt.option }}</ion-label>
+          </ion-item>
+
+        </ion-item-group>
+
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

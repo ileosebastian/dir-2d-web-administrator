@@ -1,0 +1,9 @@
+<div class="container-opt ion-no-padding ion-hide-lg-down">
+  <ion-list class="option-list-conainter ion-no-padding">
+    <ion-chip #chip *ngFor="let cat of categories | async" (click)="selectCategory( cat )" [id]="cat.category"
+      color="primary" mode="ios" outline="true">
+      <ion-icon [src]="cat.iconPath"></ion-icon>
+      <ion-label>{{ cat.shortName }}</ion-label>
+    </ion-chip>
+  </ion-list>
+</div>

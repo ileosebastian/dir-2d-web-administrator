@@ -1,0 +1,22 @@
+#logout {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ion-img {
+  width: 60px;
+}
+
+ion-item-divider {
+  & ion-label {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+ion-menu-button {
+  cursor: pointer;
+}

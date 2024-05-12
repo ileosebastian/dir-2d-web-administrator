@@ -1,0 +1,42 @@
+ion-header
+ion-toolbar {
+  height: 50px;
+}
+
+ion-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+ion-toggle {
+  padding: 12px;
+
+  --handle-width: 25px;
+  --handle-height: 27px;
+  --handle-max-height: auto;
+  --handle-spacing: 0px;
+
+  contain: none;
+}
+
+ion-toggle::part(track),
+ion-toggle.toggle-checked::part(track) {
+  height: 27px;
+  width: 50px;
+
+  background: #ddd;
+
+  /* Required for iOS handle to overflow the height of the track */
+  overflow: visible;
+}
+
+ion-toggle::part(handle) {
+  background: #ffffff;
+
+  border-radius: 100%;
+  box-shadow: none;
+}
+
+ion-toggle.toggle-checked::part(handle) {
+  background: #000000;
+}

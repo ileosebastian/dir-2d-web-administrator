@@ -1,0 +1,167 @@
+<ion-row>
+  <ion-col size="1"></ion-col>
+  <ion-col size="10">
+    <h3 class="ion-text-center ion-no-padding">Editar {{ place.name }}</h3>
+  </ion-col>
+  <ion-col size="1">
+    <ion-button (click)="close()" fill="clear" color="danger">
+      <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+  </ion-col>
+
+  <!-- ----------  info del ambiente ----------  -->
+  <ion-col size="1"></ion-col>
+  <ion-col size="10">
+    <h3 class="ion-text-center ion-no-padding">Informacion del ambiente</h3>
+  </ion-col>
+  <ion-col size="1"></ion-col>
+
+  <ion-col size="2"></ion-col>
+  <ion-col size="4" class="ion-margin-end">
+    <ion-input name="catName" label="Nombre:" label-placement="floating" fill="outline" placeholder="Aula 101"
+      type="text" [value]="place.name || 'Aula'" #placeName required>
+    </ion-input>
+  </ion-col>
+
+  <ion-col size="4" class="ion-margin-start">
+    <ion-input name="codeName" label="Codigo:" label-placement="floating" fill="outline" placeholder="PB, 101, ..." type="text"
+      [value]="place.code || '101'" #placeCode required>
+    </ion-input>
+  </ion-col>
+  <ion-col size="2"></ion-col>
+
+  <!-- ---------- info del sprite ----------  -->
+  <ion-row>
+
+    <ion-col size="1"></ion-col>
+    <ion-col size="10">
+      <h3 class="ion-text-center ion-no-padding">Informacion del Sprite</h3>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+
+    <ion-col size="4"></ion-col>
+    <ion-col size="4">
+      <ion-input name="labelName" label="Etiqueta:" label-placement="floating" fill="outline" placeholder="201" type="number"
+        [value]="sprite.label || ''" #label required>
+      </ion-input>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+
+    <ion-col size="12" class="ion-no-padding ion-no-margin">
+      <h4 class="ion-text-center ion-no-margin" style="margin-bottom: 10px;">Posicion:</h4>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+    <ion-col size="4" class="ion-margin-end">
+      <ion-input name="xName" label="Columna:" label-placement="floating" fill="outline" placeholder="x" type="number"
+        [value]="box.x" #x required>
+      </ion-input>
+    </ion-col>
+    <ion-col size="4" class="ion-margin-start">
+      <ion-input name="yName" label="Fila:" label-placement="floating" fill="outline" placeholder="y" type="number"
+        [value]="box.y" #y required>
+      </ion-input>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+
+    <ion-col size="12" class="">
+      <h4 class="ion-text-center">Tamaño:</h4>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+    <ion-col size="4" class="ion-margin-end">
+      <ion-input name="widthName" label="Ancho:" label-placement="floating" fill="outline"
+        placeholder="Un numero visible para el usuario" type="number" [value]="sprite.width" #width required>
+      </ion-input>
+    </ion-col>
+    <ion-col size="4" class="ion-margin-start">
+      <ion-input name="heightName" label="Largo:" label-placement="floating" fill="outline"
+        placeholder="Un numero visible para el usuario" type="number" [value]="sprite.height" #height required>
+      </ion-input>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+
+  </ion-row>
+
+  <!-- ----------  if its a professor office ----------  -->
+  <ion-col *ngIf="place.category === 'profe-office' || place.category === 'admin-office'" size="12">
+
+    <ion-row>
+      <ion-col size="12">
+        <h4 class="ion-text-center">¿Pertenece a algun docente?</h4>
+      </ion-col>
+      <ion-col size="12">
+        <!-- <ion-radio-group [value]="place.belongsProfessor || professorsSelected.length > 0 ? 'yes' : 'no'" class="is-belongs-professors"> -->
+        <ion-radio-group [value]="place.belongsProfessor ? 'yes' : 'no'"class="is-belongs-professors">
+          <ion-radio value="yes" (click)="showProfeSelector()">Si</ion-radio><br />
+          <ion-radio value="no" (click)="hideProfeSelector()">No</ion-radio><br />
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="place.belongsProfessor">
+
+      <ion-col size="12" class="ion-margin-bottom" *ngIf="professorsSelected.length > 0; else noprofessors">
+        <ion-col size="12">
+          <h5 class="ion-text-center ion-no-padding">Docente(s) asociado(s):</h5>
+        </ion-col>
+
+        <ion-row>
+          <ion-col size="2"></ion-col>
+          <ion-col size="8">
+            <app-professor-picked-card [professorsPicked]="professorsSelected"
+              (emittProfessorUnpicked)="unSelectProfessor( $event )">
+            </app-professor-picked-card>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ng-template #noprofessors>
+        <ion-col size="12">
+          <h6 class="ion-text-center">No hay docente(s) asociados a este ambiente.</h6>
+        </ion-col>
+      </ng-template>
+
+      <ion-col size="2"></ion-col>
+      <ion-col size="8" class="show-professor-selector">
+        <ion-col size="12" class="professor-selector-title">
+          <h5 class="ion-margin-start">Seleccione uno o mas docentes:</h5>
+          <ion-button (click)="closeProfessorSelector()" fill="clear">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12" class="ion-padding">
+
+          <app-professors-search-bar
+            [isHeader]="false"
+            (emmitSearchText)="search( $event )">
+          </app-professors-search-bar>
+
+          <ion-list class="list-all-professors">
+            <app-professor-selector-card [professorsSelected]="professorsSelected"
+              [professorUnselected]="unselectedProfe" [professors]="professors | searchProfessor:professorName"
+              (emittProfessor)="saveNewProfessor( $event )"
+              (emittProfeUnselected)="removeProfeUnselected($event)">
+            </app-professor-selector-card>
+          </ion-list>
+
+        </ion-col>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+
+    </ion-row>
+
+  </ion-col>
+
+</ion-row>
+
+<ion-row style="margin-left: auto; margin-right: auto;">
+  <ion-col size="12" class="ion-margin-top show-info-submits">
+    <ion-button color="tertiary" fill="solid" (click)="update()">
+      aplicar cambios
+    </ion-button>
+    <ion-button color="danger" fill="solid" (click)="remove()">
+      eliminar del editor
+    </ion-button>
+  </ion-col>
+</ion-row>

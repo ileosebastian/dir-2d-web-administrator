@@ -1,0 +1,105 @@
+<ion-content>
+  <ion-grid fixed>
+    
+    <app-header-editor
+      backTo="home/create/map"
+      title="Ingreso del nuevo mapa"
+    ></app-header-editor>
+
+    <app-information-floors
+      [currentPlanes]="planes"
+      [quantity]="quantity"
+      [showGuidelines]="showGuidelines"
+      (emittPlanesAndFloor)=" $event.isRemoved ? removeFloorListener( $event ) : addFloorListener( $event ) "
+    ></app-information-floors>
+    
+    <ion-row>
+      <ion-col size="12" class="ion-padding" style="border: solid 1px black; border-radius: 5px;">
+    
+        <div class="editor-container ion-margin-top ion-margin-bottom">
+          <!-- places ... -->
+          <app-sprites-list
+            (emittTypePlaceCategory)="typePlaceCategory = $event"
+            (emittShowColorInput)="showColorInput = $event"
+          ></app-sprites-list>
+    
+          <!-- editor -->
+          <app-playground-editor
+            [currentPlane]="currentPlane"
+            [typePlaceCategory]="typePlaceCategory"
+
+            (emittQuantity)="setQuantity( $event )"
+            (emittPlanes)="planes = $event"
+
+            (emittCurrentPlane)="currentPlane = $event"
+
+            (emittShowPlaceInfo)="showPlaceInfo = $event"
+            (emittPlace)="place = $event"
+            (emittSprite)="sprite = $event"
+            
+            (emittShowWaypointInfo)="showWaypointInfo = $event"
+            (emittWaypoint)="waypoint = $event"
+
+            (emittBox)="box = $event"
+          ></app-playground-editor>
+    
+          <!-- floor -->
+          <app-floors-list
+            [showGuidelines]="showGuidelines"
+            [planes]="planes"
+            [currentPlane]="currentPlane"
+            (emittCurrentPlane)="currentPlane = $event"
+          ></app-floors-list>
+        </div>
+    
+        <app-drawing-options
+          [currentPlane]="currentPlane"
+          [showColorInput]="showColorInput"
+          (emittShowGuidelines)="toggleGuideListener( $event )"
+        ></app-drawing-options>
+    
+      </ion-col>
+    </ion-row>
+    
+    <ion-row *ngIf="showWaypointInfo || showPlaceInfo" class="ion-margin-top ion-padding-start ion-padding-end ion-padding-bottom show-more-fields">
+    
+      <app-places-info
+        *ngIf="showPlaceInfo"
+
+        [typePlace]="typePlaceCategory"
+        [box]="box"
+        [place]="place"
+        [sprite]="sprite"
+        [plane]="currentPlane"
+
+        (showEmitter)="closeMoreFields()"
+      ></app-places-info>
+    
+      <app-waypoint-info
+        *ngIf="showWaypointInfo"
+
+        [showWaypointInfo]="showWaypointInfo"
+        [box]="box"
+        [waypoint]="waypoint"
+        [plane]="currentPlane"
+
+        (showEmitter)="closeMoreFields()"
+      ></app-waypoint-info>
+    
+    </ion-row>
+
+    <ion-row class="ion-padding">
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        
+        <app-submit-new-map-btn
+          [planes]="planes"
+          [isAnUpdate]="false"
+        ></app-submit-new-map-btn>
+
+      </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+
+  </ion-grid>  
+</ion-content>  

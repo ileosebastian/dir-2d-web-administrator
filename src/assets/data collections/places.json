@@ -1,0 +1,178 @@
+[
+    {
+        "name": "oficina 104",
+        "type": "oficina",
+        "code": "104",
+        "belongsProfessors": true,
+        "professors": [
+            "asdfasdfasdfasdfasdf",
+            "asdfasdfasdgasdfaasf"
+        ],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "oficina 104",
+        "type": "oficina",
+        "code": "105",
+        "belongsProfessors": true,
+        "professors": [
+            "asdfasdfasdfasdfasdf",
+            "asdfasdfasdgasdfaasf"
+        ],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "aula 100",
+        "type": "aula",
+        "code": "100",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "aula 102",
+        "type": "aula",
+        "code": "102",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "aula 103",
+        "type": "aula",
+        "code": "103",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "salida de emergencia ala sur",
+        "type": "salida de emergencia",
+        "code": "",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "salida de emergencia ala norte",
+        "type": "salida de emergencia",
+        "code": "",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "ascensor PB",
+        "type": "ascensor",
+        "code": "PB",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "baño sur",
+        "type": "bathroom",
+        "code": "",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    },
+    {
+        "name": "baño norte",
+        "type": "bathroom",
+        "code": "",
+        "belongsProfessors": false,
+        "professors": [],
+        "coordinates": {
+            "real": {
+                "longitude": "-102931290312",
+                "latitude": "-23458i9345349"
+            },
+            "canvas": [
+                123123,
+                12312312
+            ]
+        }
+    }
+]

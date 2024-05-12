@@ -1,0 +1,29 @@
+<div class="editor-container-opt">
+  <ion-item slot="start">
+    <ion-label class="ion-margin-end">Guía</ion-label>
+    <ion-checkbox [checked]="true" labelPlacement="start" (ionChange)="toggleGuide($event)"></ion-checkbox>
+  </ion-item>
+
+  <div class="block-opt">
+    <ion-button color="primary" (click)="selectBlockOrWP('block', 'dark')" target="block" id="block" #btn
+      fill="outline">
+      bloque
+    </ion-button>
+    <input *ngIf="showColorInput" type="color" id="blockColor">
+  </div>
+
+  <ion-button color="primary" (click)="selectBlockOrWP('invisible_lock_up', 'tertiary')" target="invisible_lock_up" id="invisible_lock_up" #btn
+    fill="outline">
+    Bloqueo para subir 
+  </ion-button>
+
+  <ion-button color="primary" (click)="selectBlockOrWP('invisible_lock_down', 'success')" target="invisible_lock_down" id="invisible_lock_down" #btn
+    fill="outline">
+    Bloqueo para bajar 
+  </ion-button>
+
+  <ion-button color="primary" (click)="selectBlockOrWP('waypoint', 'warning')" target="waypoint" id="waypoint" #btn
+    fill="outline">
+    Punto de referencia
+  </ion-button>
+</div>

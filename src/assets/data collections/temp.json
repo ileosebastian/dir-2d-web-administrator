@@ -1,0 +1,10 @@
+[
+    {
+        "shortName": "usuario",
+        "name": "usuario de la aplicación",
+        "category": "user",
+        "pathRound": "../../../../../assets/icons/category/round/user.svg",
+        "pathClear": "../../../../../assets/icons/category/clear/user.svg",
+        "color": "primary"
+    }
+]

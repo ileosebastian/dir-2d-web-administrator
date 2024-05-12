@@ -1,0 +1,25 @@
+
+<ion-list>
+  <ion-radio-group name="auto" [value]="placePicked ? waypoint.uuid : ''" >
+
+    <ion-card
+      *ngFor="let place of places"
+      (click)="emittNewPlaceSelection($event, waypoint.uuid, place)" 
+      [disabled]="place.uuid === placePicked?.uuid && placePicked?.wayPointId !== waypoint.uuid">
+      <ion-item>
+
+        <ion-avatar slot="start">
+          <img [src]="'../../../../assets/icons/category/round/'+place.category+'.svg'" alt="place"/>
+        </ion-avatar>
+        <ion-card-header>
+          <ion-card-title class="ion-text-capitalize">{{ place.name + ' ' + place.code }}</ion-card-title>
+          <ion-card-subtitle class="ion-text-capitalize">{{ getNameByCategory(place.category).toUpperCase() }}</ion-card-subtitle>
+        </ion-card-header>
+    
+        <ion-radio [name]="place.uuid" [value]="place.wayPointId" slot="end" ></ion-radio>
+    
+      </ion-item>
+    </ion-card>
+    
+  </ion-radio-group>
+</ion-list>

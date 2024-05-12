@@ -1,0 +1,13 @@
+.input-colors {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.list-all-places {
+    max-height: 300px;
+    // max-width: 50%;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}

@@ -1,0 +1,15 @@
+#container {
+    height: 100%;
+    // border-color: aqua;
+}
+
+#menu {
+    // border: solid 3px purple;
+    max-height: 75%;
+    height: auto;
+    overflow-y: auto;
+}
+
+ion-content {
+    height: 85%;
+}

@@ -1,0 +1,18 @@
+<ion-searchbar
+  *ngIf="isHeader; else noHeader"
+  (ionInput)="search( $event )"
+  inputmode="text"
+  class="ion-margin-top ion-margin-bottom"
+  placeholder="Buscar docentes" [debounce]="250" mode="ios">
+</ion-searchbar>
+
+
+<ng-template #noHeader>
+  <ion-searchbar
+    (ionInput)="search( $event )"
+    (ionCancel)="cancelSearch( $event )"
+    inputmode="text"
+    class=""
+    placeholder="Buscar docentes" [debounce]="250" mode="ios">
+  </ion-searchbar>
+</ng-template>

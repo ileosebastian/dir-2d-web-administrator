@@ -1,0 +1,36 @@
+<ion-button
+  (click)="showAllProfessors()"
+  class="ion-margin-top ion-margin-bottom"
+  expand="block"
+  fill="solid"
+  shape="round">
+  <ion-label class="ion-text-wrap">todos los docentes</ion-label>
+</ion-button>
+
+
+<ion-accordion-group *ngFor="let university of res | async" class="container-options">
+
+  <ion-accordion [value]="university.campusName" class="container-options">
+    <ion-item
+      (click)="showProfessorsByCampus( university.campusName )"
+      #campus
+      [target]="university.campusName"
+      slot="header"
+      color="light">
+      <ion-label class="ion-text-wrap">Campus {{ university.campusName }}</ion-label>
+    </ion-item>
+
+    <div class="ion-no-padding container-options" *ngFor="let facus of university.faculties | async"  slot="content">
+      <ion-item
+        (click)="showProfessorsByFaculty( facus.name )"
+        #faculty
+        [target]="facus.name"
+        button
+        detail="true"
+        color="">
+        <ion-label class="ion-text-wrap">Facultad de {{ facus.name }}</ion-label>
+      </ion-item>
+    </div>
+  </ion-accordion>
+
+</ion-accordion-group>

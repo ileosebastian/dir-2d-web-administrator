@@ -1,0 +1,14 @@
+[
+    {
+        "uuid": "",
+        "email": "",
+        "phoneNumber": "",
+        "advanceSchedule": {
+            "first": [],
+            "second": []
+        },
+        "category": "",
+        "dedication": "",
+        "office": ""
+    }
+]

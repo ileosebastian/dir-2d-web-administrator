@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary" mode="ios">
+
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-capitalize">{{ title }}</ion-title>
+
+    <ion-toggle
+      #toggle
+      slot="end"
+      aria-label="dark toggle"
+      color="light"
+      (ionChange)="onToggleColorTheme( $event )"
+      [checked]="checked">
+      <ion-icon name="moon"></ion-icon>
+    </ion-toggle>
+
+  </ion-toolbar>
+</ion-header>

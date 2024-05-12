@@ -1,0 +1,29 @@
+<ion-grid fixed>
+  <app-header-search 
+    domainName="docentes"
+    domainToCreate="ingresar nuevo docente"
+    featureRoute="../create/professor"
+    (emmitSearchText)="listenSearchText( $event )">
+  </app-header-search>
+
+  <ion-row id="container">
+
+    <ion-col size="3" id="menu">
+      <!-- Lista de campus universitarios -->
+        <h3 class="ion-no-padding ion-text-wrap">Filtrar por:</h3>
+        
+        <app-accordion-menu (filterEmitter)="listenFilter( $event )">
+        </app-accordion-menu>
+    </ion-col>
+
+    <ion-col size="9" class="ion-padding">
+      <!-- el contenido necesario de la pagina esta aqui -->
+      <ion-content>
+        <app-professor-card
+          [professors]="professors | searchProfessor:professorName">
+        </app-professor-card>
+      </ion-content>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

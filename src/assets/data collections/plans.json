@@ -1,0 +1,17 @@
+[
+    {
+        "floor": 0,
+        "image": "floor_1.svg",
+        "places": []
+    },
+    {
+        "floor": 1,
+        "image": "floor_2.svg",
+        "places": []
+    },
+    {
+        "floor": 2,
+        "image": "floor_3.svg",
+        "places": []
+    }
+]

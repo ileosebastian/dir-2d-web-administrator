@@ -1,0 +1,7 @@
+<div class="container-opt ion-hide-lg-down">
+  <ion-list class="option-list-conainter planes">
+    <ion-button #planes *ngFor="let i of planes" fill="outline" class="places-btn" rel="{{i}}" name="places-btn" (click)="selectFloor(i)">
+      P{{ i === 1 ? 'B' : i - 1 }}
+    </ion-button>
+  </ion-list>
+</div>

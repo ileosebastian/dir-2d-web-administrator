@@ -1,0 +1,11 @@
+{
+  "name": "web-admin-standalone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone",
+  "devServer": {
+    "address": "localhost",
+    "port": 8081
+  }
+}

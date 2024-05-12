@@ -1,0 +1,21 @@
+
+<div *ngFor="let profe of professorsPicked">
+  <ion-card>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../../assets/icons/user.svg" />
+      </ion-avatar>
+      <ion-card-header>
+        <ion-card-title class="ion-text-capitalize">{{ profe?.name?.toLowerCase() }}</ion-card-title>
+        <ion-card-subtitle class="ion-text-capitalize">Facultad de {{ profe?.faculty }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-buttons slot="end">
+        <ion-button color="danger" (click)="unbindProfessor( profe )">
+          Desligar
+        </ion-button>
+      </ion-buttons> 
+
+    </ion-item>
+  </ion-card>
+</div>

@@ -1,0 +1,138 @@
+<!--   -->
+<!--  -->
+<!--  -->
+<ion-content>
+    <ion-grid fixed="true" class="ion-no-padding" *ngIf="building; else loading">
+        <form [formGroup]="mapForm">
+            <ion-row>
+                <ion-col size="1"></ion-col>
+                <ion-col size="10">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-toolbar>
+                                <ion-buttons slot="start">
+                                    <ion-back-button defaultHref="home/search/map" color="primary"></ion-back-button>
+                                </ion-buttons>
+                            </ion-toolbar>
+                        </ion-col>
+                        <ion-col size="10">
+                            <h1 class="ion-text-center">Actualizar mapa</h1>
+                        </ion-col>
+                        <ion-col size="1"></ion-col>
+                    </ion-row>
+                    
+                    <ion-row>
+                        <ion-col size="12">
+                            <h2 class="ion-text-center">Informacion general</h2>
+                        </ion-col>
+
+                        <ion-col size="3"></ion-col>
+                        <ion-col size="6" class="ion-padding">
+                            <ion-input (ionInput)="setBuildingName( $event )" formControlName="buildingName" name="mapName" label="Nombre del mapa:"
+                                label-placement="floating" fill="outline" placeholder="Edificio Uno" required>
+                            </ion-input>
+                        </ion-col>
+                        <ion-col size="3"></ion-col>
+
+                        <ion-col size="6" class="ion-padding">
+                            <ion-item>
+                                <ion-select  (ionChange)="onSelectCamp( $event )" formControlName="campus"
+                                    label="Campus:" label-placement="floating" interface="popover"
+                                    placeholder="Seleccione el campus">
+                                    <ion-select-option [value]="camp.name" *ngFor="let camp of campusList | async">
+                                        Campus {{ camp.name }}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+
+                        <ion-col size="6" class="ion-padding">
+                            <ion-item>
+                                <ion-select *ngIf="!facultyList; else faculties" label="Facultad:"
+                                    label-placement="floating" interface="popover"
+                                    placeholder="Primero, seleccione un campus">
+                                    <ion-select-option value="">Sin facultad</ion-select-option>
+                                </ion-select>
+                                <ng-template #faculties>
+                                    <ion-select formControlName="faculty"  (ionChange)="onSelectFacu( $event )" label="Facultad:" label-placement="floating"
+                                        interface="popover" placeholder="Seleccione la facultad">
+                                        <ion-select-option *ngFor="let facu of facultyList | async" [value]="facu.name">
+                                            Facultad de {{ facu.name }}
+                                        </ion-select-option>
+                                    </ion-select>
+                                </ng-template>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-col>
+                <ion-col size="1"></ion-col>
+            </ion-row>
+        <!-- </form> -->
+
+            <app-information-floors [currentPlanes]="planes" [quantity]="quantity" [showGuidelines]="showGuidelines"
+                (emittPlanesAndFloor)=" $event.isRemoved ? removeFloorListener( $event ) : addFloorListener( $event ) "></app-information-floors>
+
+            <ion-row>
+                <ion-col size="12" class="ion-padding" style="border: solid 1px black; border-radius: 5px;">
+
+                    <div class="editor-container ion-margin-top ion-margin-bottom">
+                        <app-sprites-list (emittTypePlaceCategory)="typePlaceCategory = $event"
+                            (emittShowColorInput)="showColorInput = $event"></app-sprites-list>
+
+                        <app-playground-editor
+                            [isAndUpdate]="true"
+                            [currentPlane]="currentPlane" [typePlaceCategory]="typePlaceCategory"
+                            (emittQuantity)="setQuantity( $event )" (emittPlanes)="planes = $event"
+                            (emittCurrentPlane)="currentPlane = $event" (emittShowPlaceInfo)="showPlaceInfo = $event"
+                            (emittPlace)="place = $event" (emittSprite)="sprite = $event"
+                            (emittShowWaypointInfo)="showWaypointInfo = $event" (emittWaypoint)="waypoint = $event"
+                            (emittBox)="box = $event"></app-playground-editor>
+
+                        <app-floors-list [showGuidelines]="showGuidelines" [planes]="planes"
+                            [currentPlane]="currentPlane" (emittCurrentPlane)="currentPlane = $event"></app-floors-list>
+                    </div>
+
+                    <app-drawing-options [currentPlane]="currentPlane" [showColorInput]="showColorInput"
+                        (emittShowGuidelines)="toggleGuideListener( $event )"></app-drawing-options>
+
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row *ngIf="showWaypointInfo || showPlaceInfo"
+                class="ion-margin-top ion-padding-start ion-padding-end ion-padding-bottom show-more-fields">
+
+                <app-places-info *ngIf="showPlaceInfo" [typePlace]="typePlaceCategory" [box]="box" [place]="place"
+                    [sprite]="sprite" [plane]="currentPlane" (showEmitter)="closeMoreFields()"></app-places-info>
+
+                <app-waypoint-info *ngIf="showWaypointInfo" [showWaypointInfo]="showWaypointInfo" [box]="box"
+                    [waypoint]="waypoint" [plane]="currentPlane" (showEmitter)="closeMoreFields()"></app-waypoint-info>
+
+            </ion-row>
+
+
+            <ion-row class="ion-padding">
+                <ion-col size="4"></ion-col>
+                <ion-col size="4">
+
+                    <app-submit-new-map-btn  [isAnUpdate]="true"
+                        [planes]="planes"
+                    ></app-submit-new-map-btn>
+
+                </ion-col>
+                <ion-col size="4"></ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+
+    <ng-template #loading >
+        <div class="load-container">
+            <div class="lds-dual-ring" *ngIf="!loadError; else showLoadError"></div>
+
+            <ng-template #showLoadError>
+                <h3>Error al cargar los datos, por favor, intente mas tarde.</h3>
+            </ng-template>
+        </div>
+    </ng-template>
+</ion-content>

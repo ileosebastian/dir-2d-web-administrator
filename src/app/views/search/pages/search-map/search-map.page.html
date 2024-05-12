@@ -1,0 +1,37 @@
+<ion-grid fixed>
+  <app-header-search
+    domainName="Mapas"
+    domainToCreate="ingresar nuevo mapa"
+    featureRoute="../create/map">
+    (emmitSearchText)="listenSearchText( $event )">
+  </app-header-search>
+
+  <ion-row class="ion-align-items-stretch principal-row">
+
+    <ion-col size="3">
+      <!-- Lista de campus universitarios -->
+      <h3 class="ion-no-padding ion-text-wrap">Filtrar por:</h3>
+
+      <app-accordion-menu (filterEmitter)="listenFilter( $event )">
+      </app-accordion-menu>
+    </ion-col>
+
+    <ion-col size="9" >
+      <!-- el contenido necesario de la pagina esta aqui -->
+      <ion-content>
+        <ion-grid fixed>
+          <ion-row>
+
+            <ion-col size="12" size-md="6" size-lg="4" *ngFor="let building of buildings">
+              <app-map-card 
+                [building]="building"
+              ></app-map-card>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

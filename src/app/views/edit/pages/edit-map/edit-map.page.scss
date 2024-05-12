@@ -1,0 +1,62 @@
+canvas {
+  border: solid 1px var(--ion-color-dark);
+  // background-color: white;
+  border-radius: 5px;
+
+  width: 100%;
+  height: 100%;
+}
+
+#guide {
+  display: grid;
+  pointer-events: none;
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#guide div {
+  border: 0.1px solid rgba(0, 0, 0, 0.1);
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+
+.load-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: var(--ion-color-dark) transparent var(--ion-color-dark) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,38 @@
+[
+    {
+      "domain": "Buscar",
+      "pathIcon": "",
+      "pathIconDark": "../../../assets/icons/side-menu/search-dark.svg",
+      "pathIconLight": "../../../assets/icons/side-menu/search-light.svg",
+      "options": [
+        {
+          "option": "Docentes",
+          "redirectTo": "search/professor",
+          "pathIcon": ""
+        },
+        {
+          "option": "Mapas",
+          "redirectTo": "search/map",
+          "pathIcon": ""
+        }
+      ]
+    },
+    {
+      "domain": "Crear",
+      "pathIcon": "",
+      "pathIconDark": "../../../assets/icons/side-menu/create-dark.svg",
+      "pathIconLight": "../../../assets/icons/side-menu/create-light.svg",
+      "options": [
+        {
+          "option": "Docente",
+          "redirectTo": "create/professor",
+          "pathIcon": ""
+        },
+        {
+          "option": "Mapa",
+          "redirectTo": "create/map",
+          "pathIcon": ""
+        }
+      ]
+    }
+]
